@@ -12,6 +12,26 @@ import render from '@/utils/test/render';
  * - A(Assert) - 테스트 결과 확인(expect 함수를 사용하여 테스트)
  * */
 
+/** beforeEach가 최상단에 선언될 경우, 각 테스트 케이스가 실행되기 전에 실행된다. */
+beforeEach(() => {});
+
+/** beforeAll은 모든 테스트 케이스가 실행되기 전에 한 번만 실행된다.
+ * beforeAll과 beforeEach가 동일한 스코프에 있는 경우, beforeAll이 먼저 실행된다.
+ * 이 함수는 전역 상태를 변경하거나, 테스트 환경을 설정할 때 사용한다.
+ */
+beforeAll(() => {});
+
+/** afterEach가 최상단에 선언될 경우, 각 테스트 케이스가 실행된 후에 실행된다.
+ * afterEach는 테스트 케이스가 실행된 후에, 테스트 환경을 정리할 때 사용한다.
+ */
+afterEach(() => {});
+
+/** afterAll은 모든 테스트 케이스가 실행된 후에 한 번만 실행된다.
+ * afterAll과 afterEach가 동일한 스코프에 있는 경우, afterEach가 먼저 실행된다.
+ * 이 함수는 전역 상태를 변경하거나, 테스트 환경을 정리할 때 사용한다.
+ * */
+afterAll(() => {});
+
 it('className props으로 설정한 css class가 적용된다.', async () => {
   /** A(Arrange) - 테스트를 위한 환경 준비(ex. 렌더링, 모킹) */
   // render API를 호출하여, 테스트 환경의 jsDom에 컴포넌트를 렌더링한다.
@@ -37,6 +57,9 @@ it('className props으로 설정한 css class가 적용된다.', async () => {
  * */
 
 describe('placeholder props', () => {
+  /** beforeEach를 describe 내부에 선언할 경우, 해당 describe 내부의 테스트 케이스가 실행되기 전에 실행된다. */
+  beforeEach(() => {});
+
   it('기본 placeholder "텍스트를 입력해 주세요."가 렌더링된다.', async () => {
     /** A(Arrange) - 테스트를 위한 환경 준비(ex. 렌더링, 모킹) */
     await render(<TextField />);
