@@ -29,3 +29,40 @@ it('className props으로 설정한 css class가 적용된다.', async () => {
     'test-class',
   );
 });
+
+/** 테스트 함수
+ * it('should~~'와 같이 테스트 케이스를 작성할 수도 있지만,
+ * test('if  ~~~') 형태로도 작성할 수 있다.
+ * describe('~~~', () => { 은 테스트를 그룹화할 때 사용한다.
+ * */
+
+describe('placeholder props', () => {
+  it('기본 placeholder "텍스트를 입력해 주세요."가 렌더링된다.', async () => {
+    /** A(Arrange) - 테스트를 위한 환경 준비(ex. 렌더링, 모킹) */
+    await render(<TextField />);
+
+    /** screen.debug()는 렌더링된 컴포넌트의 html을 콘솔에 출력한다. */
+    screen.debug();
+
+    /** A(Act) - 테스트할 액션 수행 */
+    // 이 부분은 패스 - 테스트할 액션이 없다.
+
+    /** A(Assert) - 테스트 결과 확인 */
+    // toBeInTheDocument는 매처라고 부른다. 매처란, 특정 조건을 만족하는지 확인하는 함수이다.
+    // dom을 테스트하기 위해, @testing-library를 사용해 매처를 확장한다.
+    expect(
+      screen.getByPlaceholderText('텍스트를 입력해 주세요.'),
+    ).toBeInTheDocument();
+  });
+
+  it('placeholder props으로 설정한 placeholder가 렌더링된다.', async () => {
+    /** A(Arrange) - 테스트를 위한 환경 준비(ex. 렌더링, 모킹) */
+    await render(<TextField placeholder="테스트 해보자!" />);
+
+    /** A(Act) - 테스트할 액션 수행 */
+    // 이 부분은 패스 - 테스트할 액션이 없다.
+
+    /** A(Assert) - 테스트 결과 확인 */
+    expect(screen.getByPlaceholderText('테스트 해보자!')).toBeInTheDocument();
+  });
+});
