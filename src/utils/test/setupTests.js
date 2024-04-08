@@ -20,6 +20,7 @@ afterAll(() => {
   server.close();
 });
 
+/** zustand를 __mocks__에 있는 zusand.js로 모킹하게 만듬 */
 vi.mock('zustand');
 
 // https://github.com/vitest-dev/vitest/issues/821
