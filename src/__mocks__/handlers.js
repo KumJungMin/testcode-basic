@@ -42,6 +42,11 @@ export const handlers = [
       ctx.json({ products, lastPage: products.length < limit }),
     );
   }),
+
+  // 사용자 정보가 없는 비로그인 상태로 모킹
+  // 하지만, 테스트 실행시 profile get API에 대해 사용자 정보가 응답되도록 모킹할 필요가 있음
+  // -> 이 경우 msw에서 제공하는 use()를 이용해 사용자 정보를 설정힐 수 있음
+  // -> use()의 경우, `setupTest.js`에서 선언한 setupServer()를 이용해 설정해야함
   rest.get(`${API_DOMAIN}${apiRoutes.profile}`, (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(null));
   }),

@@ -16,7 +16,7 @@ beforeAll(() => {
 
 afterEach(() => {
   /** msw 서버의 모든 핸들러를 리셋함 */
-  server.resetHandlers();
+  server.resetHandlers(); // server.use를 사용하는 경우, 각 테스트 케이스마다 핸들러를 리셋해야함
   vi.clearAllMocks();
 });
 
