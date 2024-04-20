@@ -11,7 +11,7 @@ export const handlers = [
   ...[
     apiRoutes.users,
     apiRoutes.product,
-    apiRoutes.categories,
+    apiRoutes.categories, // 카테고리 목록 조회 API 응답 모킹
     apiRoutes.couponList,
   ].map(path =>
     /** request 쿼리 파라미터에 대한 응답을 변경
