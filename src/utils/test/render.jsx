@@ -7,7 +7,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 /** api를 mocking 하기 위한 tanstack에 대한 테스트 설정 예시.
  * 테스트를 진행할 때, render.tsx 파일은 컴포넌트 렌더링 단계에서 쓰인다.
-*/
+ * */
 
 // https://tanstack.com/query/v4/docs/react/guides/testing
 const queryClient = new QueryClient({

@@ -22,6 +22,13 @@ export const handlers = [
       res(ctx.status(200), ctx.json(response[path])),
     ),
   ),
+
+  /** Mock Service Worker를 이용한 API 응답 모킹
+   *
+   * 1. 테스트 환경에서 상품 목록 조회 API 요청이 실행되면 msw에서 요청을 가로챔
+   * 2. products.json에 정의한 상품 목록 모킹 데이터를 페이징 단위로 잘라 API 응답처럼 반환
+   * 3. 테스트 코드에서 동일한 모킹 데이터를 기반으로 원하는 시나리오에 대한 안정성 있는 검증 가능
+   * */
   rest.get(`${API_DOMAIN}${apiRoutes.products}`, (req, res, ctx) => {
     const data = response[apiRoutes.products];
     const offset = Number(req.url.searchParams.get('offset'));
