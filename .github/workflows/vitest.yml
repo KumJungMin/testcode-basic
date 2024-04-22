@@ -1,3 +1,9 @@
+# Github Actions
+# 빌드·테스트 및 배포 파이프라인을 자동화 할 수 있는 지속적 통합 및 지속적 배포(CI/CD) 플랫폼
+# 레포지토리에 워크플로우를 생성하고 나만의 빌드·테스트·배포를 자동화 할 수 있 다.
+# .github/worflows에 YAML 파일로 정의한다.
+# 원하는 시점에 테스트 액션을 실행하여 피드백을 받을 수 있다.
+
 name: 'vitest test'
 on: pull_request
 jobs:
