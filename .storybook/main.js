@@ -4,7 +4,7 @@ const config = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
+    '@storybook/addon-interactions', // play() 함수를 쓰기위해 필요
     'storybook-addon-react-router-v6',
   ],
   framework: {
