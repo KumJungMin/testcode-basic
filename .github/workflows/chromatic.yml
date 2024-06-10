@@ -1,6 +1,8 @@
 # https://www.chromatic.com/docs/github-actions
+# 이 파일은 chromatic에 PR이 올라올 때마다 자동으로 스토리북을 업로드하는 workflow 파일입니다.
+
 name: 'chromatic test'
-on: pull_request
+on: pull_request # 실제 적용시에는 메인 브렌치의 푸시가 발생했을 때 실행되도록 변경해야 합니다.
 jobs:
   chromatic-deployment:
     runs-on: ubuntu-latest
@@ -14,7 +16,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Publish to Chromatic
+        # 기본적으로 프로젝트의 build:storybook을 실행하여 스토리북을 빌드하고 chromatic에 업로드합니다.
         uses: chromaui/action@v1
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }} # https://www.chromatic.com/docs/github-actions/
-          onlyChanged: true # https://www.chromatic.com/docs/turbosnap/#turbosnap
+          onlyChanged: true
+          # https://www.chromatic.com/docs/turbosnap/#turbosnap
+          # onlyChanged 옵션을 사용하면 변경된 스토리만 업로드합니다.
